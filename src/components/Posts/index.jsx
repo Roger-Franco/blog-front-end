@@ -1,5 +1,15 @@
-import { Grid, Paper, styled } from "@mui/material";
+import {
+  AppBar,
+  Grid,
+  IconButton,
+  Paper,
+  styled,
+  Tab,
+  Tabs,
+  Toolbar,
+} from "@mui/material";
 import { Box } from "@mui/system";
+import MenuIcon from "@mui/icons-material/Menu";
 import React from "react";
 import { PostCard } from "../PostCard";
 import { PostCard2 } from "../PostCard2";
@@ -17,7 +27,19 @@ const Item = styled(Paper)(({ theme }) => ({
 export const Posts = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container>
+      <AppBar>
+        <Tabs>
+          <Toolbar>
+            <IconButton>
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
+          <Tab label="Item One" />
+          <Tab label="Item Two" />
+          <Tab label="Item Three" />
+        </Tabs>
+      </AppBar>
+      <Grid container style={{ marginTop: "70px" }}>
         <Grid item xs={3}>
           <Item>
             <PostCard />
