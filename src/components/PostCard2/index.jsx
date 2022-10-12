@@ -12,17 +12,15 @@ export const PostCard2 = () => {
   const [updateNews, setUpdateNews] = useState(false);
 
   const url =
-    "https://newsapi.org/v2/top-headlines?" +
-    "sources=bbc-news&" +
-    "apiKey=3a39182ebcf345629a9dcba3a2d9d126";
+    "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=3a39182ebcf345629a9dcba3a2d9d126";
 
   useEffect(() => {
-    fetch(url)
+    const postJson = fetch(url)
       .then((response) => response.json())
       .then((myJson) => {
         setData(myJson.articles);
       });
-  }, [updateNews, url]);
+  }, [updateNews]);
 
   return (
     <>
