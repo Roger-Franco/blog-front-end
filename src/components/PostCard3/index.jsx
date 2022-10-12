@@ -19,6 +19,7 @@ export const PostCard3 = () => {
       .then((response) => response.json())
       .then((myJson) => {
         setData(myJson.articles);
+        console.log(myJson, "myJson3");
       });
   }, [updateNews]);
 
@@ -26,7 +27,7 @@ export const PostCard3 = () => {
     <>
       {data &&
         data.map((result) => (
-          <>
+          <div key={result.url}>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
@@ -61,7 +62,7 @@ export const PostCard3 = () => {
                 </Button>
               </CardActions>
             </Card>
-          </>
+          </div>
         ))}
     </>
   );

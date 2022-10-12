@@ -19,8 +19,8 @@ export const PostCard4 = () => {
     fetch(url3)
       .then((response) => response.json())
       .then((myJson) => {
-        setData(myJson);
-        console.log(myJson, "myJson5");
+        setData(myJson.articles);
+        console.log(myJson, "myJson4");
       });
   }, [updateNews]);
 
@@ -28,8 +28,8 @@ export const PostCard4 = () => {
     <>
       {data &&
         data.map((result) => (
-          <>
-            <Card key={result.id} sx={{ maxWidth: 345 }}>
+          <div key={result.url}>
+            <Card sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
                 height="140"
@@ -63,7 +63,7 @@ export const PostCard4 = () => {
                 </Button>
               </CardActions>
             </Card>
-          </>
+          </div>
         ))}
     </>
   );

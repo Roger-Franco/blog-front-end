@@ -27,18 +27,19 @@ const Item = styled(Paper)(({ theme }) => ({
 export const Posts = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar>
-        <Tabs>
+      {/* <AppBar>
+        <Tabs value="0">
           <Toolbar>
             <IconButton>
               <MenuIcon />
             </IconButton>
           </Toolbar>
-          <Tab value={0} label="Item One" />
-          <Tab value={0} label="Item Two" />
-          <Tab value={0} label="Item Three" />
+          <Tab value="0" label="Item Zero" />
+          <Tab href="/PostCard" value="1" label="Item One" />
+          <Tab value="2" label="Item Two" />
+          <Tab value="3" label="Item Three" />
         </Tabs>
-      </AppBar>
+      </AppBar> */}
       <Grid container style={{ marginTop: "70px" }}>
         <Grid item xs={3}>
           <Item>

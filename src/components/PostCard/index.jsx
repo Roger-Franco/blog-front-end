@@ -25,7 +25,7 @@ export const PostCard = () => {
     <>
       {data &&
         data.map((result) => (
-          <>
+          <div key={result.id}>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
@@ -60,7 +60,7 @@ export const PostCard = () => {
                 </Button>
               </CardActions>
             </Card>
-          </>
+          </div>
         ))}
     </>
   );
