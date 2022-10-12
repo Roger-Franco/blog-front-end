@@ -7,21 +7,20 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import moon from "../../static/images/download.jpeg";
 
-export const PostCard4 = () => {
+export const PostCard5 = () => {
   const [data, setData] = useState();
   const [updateNews, setUpdateNews] = useState(false);
 
-  const url =
-    "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=3a39182ebcf345629a9dcba3a2d9d126";
   const url2 =
-    "https://newsdata.io/api/1/news?apikey=pub_122006ad0699de9c0b4f0d27895131837b87d";
+    "https://newsdata.io/api/1/archive?apikey=pub_122006ad0699de9c0b4f0d27895131837b87d";
+  const url3 = "https://jsonplaceholder.typicode.com/photos";
 
   useEffect(() => {
-    fetch(url2)
+    fetch(url3)
       .then((response) => response.json())
       .then((myJson) => {
-        setData(myJson.results);
-        console.log(myJson, "myJson");
+        setData(myJson);
+        console.log(myJson, "myJson5");
       });
   }, [updateNews]);
 

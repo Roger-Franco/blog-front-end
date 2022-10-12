@@ -19,7 +19,6 @@ export const PostCard = () => {
       .then((response) => response.json())
       .then((myJson) => {
         setData(myJson.results);
-        console.log(myJson, "myJson");
       });
   }, [updateNews]);
   return (

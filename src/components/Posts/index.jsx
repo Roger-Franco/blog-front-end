@@ -15,6 +15,8 @@ import { PostCard } from "../PostCard";
 import { PostCard2 } from "../PostCard2";
 import { PostCard3 } from "../PostCard3";
 import { PostCard4 } from "../PostCard4";
+import { PostCard5 } from "../PostCard5";
+import { PostCard6 } from "../PostCard6";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -40,25 +42,31 @@ export const Posts = () => {
         </Tabs>
       </AppBar>
       <Grid container style={{ marginTop: "70px" }}>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <Item>
             <PostCard2 />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <Item>
             <PostCard />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <Item>
             <PostCard3 />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
+          <Item>{/* <PostCard4 /> */}</Item>
+        </Grid>
+        <Grid item xs={2}>
           <Item>
-            <PostCard4 />
+            <PostCard5 />
           </Item>
+        </Grid>
+        <Grid item xs={2}>
+          <Item>{/* <PostCard6 /> */}</Item>
         </Grid>
       </Grid>
     </Box>
