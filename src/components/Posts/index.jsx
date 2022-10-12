@@ -42,12 +42,12 @@ export const Posts = () => {
       <Grid container style={{ marginTop: "70px" }}>
         <Grid item xs={3}>
           <Item>
-            <PostCard />
+            <PostCard2 />
           </Item>
         </Grid>
         <Grid item xs={3}>
           <Item>
-            <PostCard2 />
+            <PostCard />
           </Item>
         </Grid>
         <Grid item xs={3}>
