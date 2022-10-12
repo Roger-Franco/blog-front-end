@@ -24,7 +24,7 @@ export const PostCard3 = () => {
       .then((myJson) => {
         setData(myJson.articles);
       });
-  }, [updateNews]);
+  }, [updateNews, url]);
 
   return (
     <>
