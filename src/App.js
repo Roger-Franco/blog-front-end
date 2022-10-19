@@ -18,7 +18,7 @@ function App() {
       <br />
       <Router>
         <div>
-          <nav>
+          {/* <nav>
             <ul>
               <li>
                 {" "}
@@ -41,7 +41,7 @@ function App() {
                 <Link to="/postcard4">PostCard4</Link>
               </li>
             </ul>
-          </nav>
+          </nav> */}
           <Routes>
             <Route path="/" element={<Posts />}></Route>
             <Route path="/postcard" element={<PostCard />}></Route>

@@ -11,16 +11,14 @@ export const PostCard4 = () => {
   const [data, setData] = useState();
   const [updateNews, setUpdateNews] = useState(false);
 
-  const url2 =
-    "https://newsdata.io/api/1/archive?apikey=pub_122006ad0699de9c0b4f0d27895131837b87d";
-  const url3 = "https://jsonplaceholder.typicode.com/photos";
+  const url = "https://jsonplaceholder.typicode.com/photos";
 
   useEffect(() => {
-    fetch(url3)
+    fetch(url)
       .then((response) => response.json())
       .then((myJson) => {
-        setData(myJson.articles);
-        console.log(myJson, "myJson4");
+        setData(myJson.slice(0, 10));
+        console.log(myJson.slice(0, 10), "myJson4");
       });
   }, [updateNews]);
 
@@ -33,7 +31,7 @@ export const PostCard4 = () => {
               <CardMedia
                 component="img"
                 height="140"
-                image={result.image_url}
+                image={result.thumbnailUrl}
                 alt="beautiful moon"
               />
               <CardContent>
@@ -55,7 +53,7 @@ export const PostCard4 = () => {
                 </Button>
                 <Button
                   variant="contained"
-                  href={result.link}
+                  href={result.url}
                   size="small"
                   target="_blank"
                 >
