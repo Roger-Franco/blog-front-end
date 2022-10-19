@@ -17,8 +17,12 @@ export const Menu = () => {
   const [data, setData] = useState();
 
   return (
-    <div>
-      <AppBar>
+    <div style={{ backgroundColor: "red" }}>
+      <AppBar
+        style={{
+          background: "linear-gradient(45deg, #48D1CC 30%, #008080 90%)",
+        }}
+      >
         <Tabs value="0">
           <Toolbar>
             <IconButton>
