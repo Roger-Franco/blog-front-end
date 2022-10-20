@@ -6,8 +6,15 @@ import { PostCard2 } from "./components/PostCard2";
 import { PostCard3 } from "./components/PostCard3";
 import { PostCard4 } from "./components/PostCard4";
 import { Divider } from "@mui/material";
+import { useState } from "react";
+import Login from "./pages/Login";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  if (user === null) {
+    return <Login />;
+  }
   return (
     <div className="App">
       <Menu />
