@@ -17,3 +17,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.avatar{
+  display:flex;
+  align-items:center;
+}
+  .avatar > img{
+    width: 35px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .avatar > label{
+    font-size: 14px;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 600px) {
+    .avatar > label{
+      display: none;
+    }
+  }

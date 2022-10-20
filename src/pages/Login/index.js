@@ -1,5 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Api from "../../Api";
 
 import { AreaLogin } from "./styled";
 import { BtnDefault, BtnDefaultIcons } from "../../components/styled";
@@ -7,7 +10,16 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
-const Login = () => {
+const Login = ({ onReceiveGoogle }) => {
+  const actionLoginGoogle = async () => {
+    let result = await Api.googleLogar();
+
+    if (result) {
+      onReceiveGoogle(result.user);
+    } else {
+      alert("Error");
+    }
+  };
   return (
     <BrowserRouter>
       <Routes>
@@ -59,7 +71,7 @@ const Login = () => {
               </BtnDefaultIcons>
 
               <BtnDefaultIcons>
-                <GoogleIcon />
+                <GoogleIcon onClick={actionLoginGoogle} />
                 <div className="center">Faça login com Google</div>
               </BtnDefaultIcons>
 

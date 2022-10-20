@@ -12,12 +12,21 @@ import Login from "./pages/Login";
 function App() {
   const [user, setUser] = useState(null);
 
+  const actionLoginDataGoodle = async (u) => {
+    let newUser = {
+      id: u.uid,
+      name: u.displayName,
+      avatar: u.photoURL,
+    };
+    setUser(newUser);
+  };
+
   if (user === null) {
-    return <Login />;
+    return <Login onReceiveGoogle={actionLoginDataGoodle} />;
   }
   return (
     <div className="App">
-      <Menu />
+      <Menu user={user} />
       <Divider />
       <br />
       <br />
