@@ -16,8 +16,18 @@ export const AreaLogin = styled.div`
     text-align: center;
   }
 
+  .organizeIcon{
+    display: flex;
+
+    a{
+      color: #000;
+    }
+  }
+
   p{
     text-align: center;
+    font-size: 13px;
+    color: #9c9c9c
   }
 
   .form-input{
