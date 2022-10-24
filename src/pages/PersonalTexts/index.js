@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { db } from "../../Api";
 
 const PersonalTexts = () => {
@@ -20,13 +21,14 @@ const PersonalTexts = () => {
 
   return (
     <>
+      <Link to="/postar-conteúdo">Postar Conteúdo</Link>
       {blogs.map((blog) => {
         return (
           <>
-            <h1>Nome: {blog.nome}</h1>
-            <h2>Idade: {blog.idade}</h2>
-            <h4>Título: {blog.titulo}</h4>
-            <p>Texto: {blog.texto}</p>
+            <h1>Nome: {blog.name}</h1>
+            <h2>Idade: {blog.age}</h2>
+            <h4>Título: {blog.title}</h4>
+            <p>Texto: {blog.text}</p>
           </>
         );
       })}

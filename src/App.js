@@ -9,6 +9,7 @@ import { Divider } from "@mui/material";
 import { useState } from "react";
 import Login from "./pages/Login";
 import PersonalTexts from "./pages/PersonalTexts";
+import WriteTexts from "./pages/PersonalTexts/components/writeTexts";
 
 function App() {
   // const [user, setUser] = useState(null);
@@ -68,6 +69,7 @@ function App() {
             <Route path="/postcard3" element={<PostCard3 />}></Route>
             <Route path="/postcard4" element={<PostCard4 />}></Route>
             <Route path="/PersonalTexts" element={<PersonalTexts />}></Route>
+            <Route path="/postar-conteúdo" element={<WriteTexts />}></Route>
           </Routes>
         </div>
       </Router>
