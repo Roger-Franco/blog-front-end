@@ -10,7 +10,8 @@ import { useState } from "react";
 import Login from "./pages/Login";
 
 function App() {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
+  const [user, setUser] = useState("diferente de null pra ficar logado");
 
   const actionLoginDataGoodle = async (u) => {
     let newUser = {
