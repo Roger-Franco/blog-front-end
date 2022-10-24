@@ -8,6 +8,7 @@ import { PostCard4 } from "./components/PostCard4";
 import { Divider } from "@mui/material";
 import { useState } from "react";
 import Login from "./pages/Login";
+import PersonalTexts from "./pages/PersonalTexts";
 
 function App() {
   // const [user, setUser] = useState(null);
@@ -29,6 +30,7 @@ function App() {
     <div className="App">
       <Menu user={user} />
       <Divider />
+      <br />
       <br />
       <br />
       <br />
@@ -65,6 +67,7 @@ function App() {
             <Route path="/postcard2" element={<PostCard2 />}></Route>
             <Route path="/postcard3" element={<PostCard3 />}></Route>
             <Route path="/postcard4" element={<PostCard4 />}></Route>
+            <Route path="/PersonalTexts" element={<PersonalTexts />}></Route>
           </Routes>
         </div>
       </Router>

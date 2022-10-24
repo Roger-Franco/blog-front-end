@@ -38,6 +38,7 @@ export const Menu = ({ user }) => {
           <Tab href="/PostCard2" value="3" label="Posts Two" />
           <Tab href="/PostCard3" value="3" label="Posts Three" />
           <Tab href="/PostCard4" value="3" label="Posts Four" />
+          <Tab href="/PersonalTexts" value="3" label="Personal Texts" />
         </Tabs>
         <div className="avatar">
           <img src={user.avatar} alt="avatar" />
