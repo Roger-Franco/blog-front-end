@@ -10,6 +10,7 @@ import { useState } from "react";
 import Login from "./pages/Login";
 import PersonalTexts from "./pages/PersonalTexts";
 import WriteTexts from "./pages/PersonalTexts/components/writeTexts";
+import EditTexts from "./pages/PersonalTexts/components/editTexts";
 
 function App() {
   // const [user, setUser] = useState(null);
@@ -70,6 +71,7 @@ function App() {
             <Route path="/postcard4" element={<PostCard4 />}></Route>
             <Route path="/PersonalTexts" element={<PersonalTexts />}></Route>
             <Route path="/postar-conteúdo" element={<WriteTexts />}></Route>
+            <Route path="/editar-conteúdo/:id" element={<EditTexts />}></Route>
           </Routes>
         </div>
       </Router>

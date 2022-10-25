@@ -29,6 +29,7 @@ const PersonalTexts = () => {
             <h2>Idade: {blog.age}</h2>
             <h4>Título: {blog.title}</h4>
             <p>Texto: {blog.text}</p>
+            <Link to={`/editar-conteúdo/${blog.id}`}>Editar</Link>
           </>
         );
       })}
