@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../../Api";
@@ -14,10 +14,14 @@ const PersonalTexts = () => {
       // data.forEach((doc) => {
       //   console.log(doc.id, doc.data());
       setBlogs(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      console.log(blogs);
     };
     getBlogs();
   }, []);
+
+  const deleteBlog = async (id) => {
+    const blogDoc = doc(db, "blogs", id);
+    await deleteDoc(blogDoc);
+  };
 
   return (
     <>
@@ -30,6 +34,7 @@ const PersonalTexts = () => {
             <h4>Título: {blog.title}</h4>
             <p>Texto: {blog.text}</p>
             <Link to={`/editar-conteúdo/${blog.id}`}>Editar</Link>
+            <button onClick={() => deleteBlog(blog.id)}>Deletar post</button>
           </>
         );
       })}

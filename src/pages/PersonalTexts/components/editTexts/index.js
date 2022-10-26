@@ -13,7 +13,6 @@ function EditTexts(props) {
 
   const { id } = useParams();
 
-  console.log(id, "id");
   const updateBlog = async (id, newName, newAge, newTitle, newText) => {
     const blogDoc = doc(db, "blogs", id);
     const newFields = {
