@@ -21,6 +21,7 @@ code {
 .avatar{
   display:flex;
   align-items:center;
+  margin-left: 250px;
 }
   .avatar > img{
     width: 35px;

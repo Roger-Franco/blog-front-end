@@ -26,24 +26,24 @@ export const Menu = ({ user }) => {
           display: "flex",
         }}
       >
-        <Tabs value="0">
-          <Toolbar>
+        <Toolbar>
+          <Tabs value="0">
             <IconButton>
               <MenuIcon />
             </IconButton>
-          </Toolbar>
-          <Tab value="0" label="Item Zero" />
-          <Tab href="/" value="1" label="All Posts" />
-          <Tab href="/PostCard" value="2" label="Posts One" />
-          <Tab href="/PostCard2" value="3" label="Posts Two" />
-          <Tab href="/PostCard3" value="3" label="Posts Three" />
-          <Tab href="/PostCard4" value="3" label="Posts Four" />
-          <Tab href="/PersonalTexts" value="3" label="Personal Texts" />
-        </Tabs>
-        <div className="avatar">
-          <img src={user.avatar} alt="avatar" />
-          <label> {user.name}</label>
-        </div>
+            <Tab value="0" label="Item Zero" />
+            <Tab href="/" value="1" label="All Posts" />
+            <Tab href="/PostCard" value="2" label="Posts One" />
+            <Tab href="/PostCard2" value="3" label="Posts Two" />
+            <Tab href="/PostCard3" value="3" label="Posts Three" />
+            <Tab href="/PostCard4" value="3" label="Posts Four" />
+            <Tab href="/PersonalTexts" value="3" label="Personal Texts" />
+          </Tabs>
+          <div className="avatar">
+            <img src={user.avatar} alt="avatar" />
+            <label> {user.name}</label>
+          </div>
+        </Toolbar>
       </AppBar>
     </div>
   );
