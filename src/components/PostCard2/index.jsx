@@ -29,10 +29,23 @@ export const PostCard2 = () => {
   }, [updateNews]);
 
   return (
-    <>
+    <div style={{ backgroundColor: "#ddd" }}>
       {data &&
         data.map((result) => (
-          <Container component="main" maxWidth="xs" key={result.url}>
+          <Container
+            component="main"
+            maxWidth="xs"
+            key={result.url}
+            sx={{
+              // backgroundColor: "#ddd",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              // width: 100,
+              // bgcolor: "#ddd",
+              // height: "90vh",
+            }}
+          >
             <Card
               style={{
                 marginTop: "20px",
@@ -77,7 +90,7 @@ export const PostCard2 = () => {
             </Card>
           </Container>
         ))}
-    </>
+    </div>
   );
 };
 
