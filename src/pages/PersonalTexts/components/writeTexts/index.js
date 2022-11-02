@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { TextField, Button, Container, Stack } from "@mui/material";
 import { Box } from "@mui/system";
 import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
@@ -23,80 +23,90 @@ function WriteTexts() {
     });
   };
   return (
-    <>
-      <Box
-        component="form"
+    <div>
+      <Container
+        // fixed
+        component="main"
+        maxWidth="xs"
         sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          // width: 100,
+          // bgcolor: "#ddd",
+          // height: "90vh",
         }}
-        noValidate
-        autoComplete="off"
       >
-        <div>
-          <TextField
-            required
-            id="outlined-required"
-            label="Required"
-            defaultValue="Hello World"
-          />
-        </div>
-        <div>
-          <TextField
-            required
-            id="outlined-required"
-            label="Required"
-            defaultValue="Hello World"
-          />
-        </div>
-        <div>
-          <TextField
-            required
-            id="outlined-required"
-            label="Required"
-            defaultValue="Hello World"
-          />
-        </div>
-        <div>
-          <TextField
-            required
-            id="outlined-required"
-            label="Required"
-            defaultValue="Hello World"
-          />
-        </div>
-        <div>
-          <TextField
-            id="outlined-multiline-static"
-            label="Multiline"
-            multiline
-            rows={4}
-            defaultValue="Default Value"
-          />
-        </div>
-      </Box>
-      <input placeholder="Nome..." onChange={(e) => setName(e.target.value)} />
-      <input
-        type="number"
-        placeholder="Idade..."
-        onChange={(e) => setAge(e.target.value)}
-      />
-      <input
-        placeholder="Título..."
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        placeholder="Subtítulo..."
-        onChange={(e) => setSubtitle(e.target.value)}
-      />
-      <textarea
-        placeholder="Texto..."
-        rows="4"
-        cols="50"
-        onChange={(e) => setText(e.target.value)}
-      />
-      <button onClick={createPost}>Postar</button>
-      <Link to="/PersonalTexts">Posts</Link>
-    </>
+        <Box
+          component="form"
+          sx={{
+            p: 1,
+            borderRadius: "5px",
+            bgcolor: "#fff",
+            "& .MuiTextField-root": { m: 1, width: "25ch" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <div>
+            <TextField
+              placeholder="Nome..."
+              onChange={(e) => setName(e.target.value)}
+              required
+              id="outlined-required"
+              label="Nome..."
+            />
+          </div>
+          <div>
+            <TextField
+              type="number"
+              onChange={(e) => setAge(e.target.value)}
+              required
+              id="outlined-required"
+              label="Idade..."
+            />
+          </div>
+          <div>
+            <TextField
+              onChange={(e) => setTitle(e.target.value)}
+              required
+              id="outlined-required"
+              label="Título"
+            />
+          </div>
+          <div>
+            <TextField
+              onChange={(e) => setSubtitle(e.target.value)}
+              required
+              id="outlined-required"
+              label="Subtítulo..."
+            />
+          </div>
+          <div>
+            <TextField
+              onChange={(e) => setText(e.target.value)}
+              id="outlined-multiline-static"
+              label="Texto"
+              multiline
+              rows={4}
+            />
+          </div>
+          <Stack sx={{ marginLeft: "10px" }} direction="row" spacing={2}>
+            <Button variant="contained" onClick={createPost}>
+              Postar
+            </Button>
+            <Button variant="contained" href="">
+              <Link
+                style={{ color: "#fff", textDecoration: "none" }}
+                to="/PersonalTexts"
+              >
+                Posts
+              </Link>
+            </Button>
+          </Stack>
+        </Box>
+      </Container>
+    </div>
   );
 }
 
