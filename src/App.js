@@ -7,15 +7,15 @@ import { PostCard3 } from "./components/PostCard3";
 import { PostCard4 } from "./components/PostCard4";
 import { Divider } from "@mui/material";
 import { useState } from "react";
-import Login from "./pages/Login";
+import LoginRegister from "./pages/LoginRegister";
 import PersonalTexts from "./pages/PersonalTexts";
 import WriteTexts from "./pages/PersonalTexts/components/writeTexts";
 import EditTexts from "./pages/PersonalTexts/components/editTexts";
 import ReadText from "./pages/PersonalTexts/components/ReadText";
 
 function App() {
-  // const [user, setUser] = useState(null);
-  const [user, setUser] = useState("diferente de null pra ficar logado");
+  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState("diferente de null pra ficar logado");
 
   const actionLoginDataGoodle = async (u) => {
     let newUser = {
@@ -27,7 +27,7 @@ function App() {
   };
 
   if (user === null) {
-    return <Login onReceiveGoogle={actionLoginDataGoodle} />;
+    return <LoginRegister onReceiveGoogle={actionLoginDataGoodle} />;
   }
   return (
     <div className="App">
