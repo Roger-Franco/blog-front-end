@@ -2,20 +2,20 @@
 import React from "react";
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Login from "./components/Login";
 import Register from "./components/Register";
+import Login from "./components/Login";
 
-const LoginRegister = ({ onReceiveGoogle }) => {
+const LoginRegister = ({ onReceiveGoogle, setUser }) => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/registrar" element={<Login />} />
-
         <Route
           exact
-          path="*"
+          path="/registrar"
           element={<Register onReceiveGoogle={onReceiveGoogle} />}
         />
+
+        <Route exact path="/login" element={<Login setUser={setUser} />} />
       </Routes>
     </BrowserRouter>
   );

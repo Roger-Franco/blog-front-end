@@ -1,51 +1,64 @@
-/* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { BtnDefault, BtnDefaultIcons } from "../../../../components/styled";
+import { BtnDefault } from "../../../../components/styled";
 import { AreaLogin } from "../../styled";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import GoogleIcon from "@mui/icons-material/Google";
-import Api from "../../../../Api";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { firebaseApp } from "../../../../Api";
 
-function Register({ onReceiveGoogle }) {
-  const actionLoginGoogle = async () => {
-    let result = await Api.googleLogar();
+const auth = getAuth(firebaseApp);
 
-    if (result) {
-      onReceiveGoogle(result.user);
-    } else {
-      alert("Error");
+function Register() {
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+
+  const register = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
     }
   };
+
   return (
     <AreaLogin>
-      <h1>Faça login em sua conta</h1>
-
-      <BtnDefaultIcons>
-        <FacebookIcon />
-        <div className="center">Faça login com Facebook</div>
-      </BtnDefaultIcons>
-
-      <BtnDefaultIcons>
-        <GoogleIcon onClick={actionLoginGoogle} />
-        <div className="center">Faça login com Google</div>
-      </BtnDefaultIcons>
-
+      <h1 className="organizeIcon">
+        <Link to="/login">
+          <ArrowBackIosIcon />
+        </Link>
+        Faça login
+      </h1>
       <p>OU</p>
-
+      <br />
+      <h3>Crie sua conta, é grátis!</h3> <br />
       <form>
+        {/* <div className="form-input">
+          <label>Nome</label>
+          <input type="text" />
+        </div> */}
         <div className="form-input">
           <label>E-mail</label>
-          <input type="email" />
+          <input
+            type="email"
+            onChange={(e) => setRegisterEmail(e.target.value)}
+          />
         </div>
         <div className="form-input">
           <label>Senha</label>
-          <input type="password" />
+          <input
+            type="password"
+            onChange={(e) => setRegisterPassword(e.target.value)}
+          />
         </div>
-        <BtnDefault>Entrar</BtnDefault>
+        <BtnDefault onClick={register}>Criar usuário!</BtnDefault>
         <div className="footerLogin">
-          Não tem uma conta?
-          <Link to="/registrar">Registre-se</Link>
+          Já tem uma conta?
+          <Link to="/login">Fazer Login</Link>
         </div>
       </form>
     </AreaLogin>

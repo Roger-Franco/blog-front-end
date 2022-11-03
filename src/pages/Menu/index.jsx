@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   AppBar,
   Grid,
@@ -13,10 +14,21 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Posts } from "../../components/Posts";
+import { getAuth, signOut } from "firebase/auth";
+import { Link } from "react-router-dom";
+import { firebaseApp } from "../../Api";
 
-export const Menu = ({ user }) => {
-  const imagem = user.avatar;
+const auth = getAuth(firebaseApp);
+
+export const Menu = ({ user, setUser }) => {
   const [data, setData] = useState();
+  const navigate = useNavigate();
+
+  const logout = async () => {
+    await signOut(auth);
+    setUser(null);
+    navigate("/login");
+  };
 
   return (
     <div style={{ backgroundColor: "red", display: "flex" }}>
@@ -41,8 +53,10 @@ export const Menu = ({ user }) => {
           </Tabs>
           <div className="avatar">
             <img src={user.avatar} alt="avatar" />
-            <label> {user.name}</label>
+            <label> {user.displayName}</label>
           </div>
+          <button onClick={logout}>Sign Out</button>
+          {/* <Link to="/login">Login</Link> */}
         </Toolbar>
       </AppBar>
     </div>
