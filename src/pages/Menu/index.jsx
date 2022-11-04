@@ -51,9 +51,16 @@ export const Menu = ({ user, setUser }) => {
             <Tab href="/PostCard4" value="3" label="Posts Four" />
             <Tab href="/PersonalTexts" value="3" label="Personal Texts" />
           </Tabs>
-          <div className="avatar">
-            <img src={user.avatar} alt="avatar" />
-            <label> {user.displayName}</label>
+          <div
+            className="avatar"
+            style={{ display: "block", marginLeft: "10px" }}
+          >
+            <img
+              src={user.avatar || localStorage.getItem("profilePic")}
+              alt="avatar"
+            />
+            <label> {user.displayName || localStorage.getItem("name")}</label>
+            <label> {localStorage.getItem("email")}</label>
           </div>
           <button onClick={logout}>Sign Out</button>
           {/* <Link to="/login">Login</Link> */}

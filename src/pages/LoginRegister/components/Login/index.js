@@ -16,10 +16,7 @@ import {
 const auth = getAuth(firebaseApp);
 const auth1 = getAuth();
 
-function Login({
-  //  onReceiveGoogle,
-  setUser,
-}) {
+function Login({ onReceiveGoogle, setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -55,15 +52,22 @@ function Login({
   // });
   // }, []);
 
-  // const actionLoginGoogle = async () => {
-  //   let result = await Api.googleLogar();
+  const actionLoginGoogle = async () => {
+    let result = await Api.googleLogar();
 
-  //   if (result) {
-  //     onReceiveGoogle(result.user);
-  //   } else {
-  //     alert("Error");
-  //   }
-  // };
+    const name = result.user.displayName;
+    const email = result.user.email;
+    const profilePic = result.user.photoURL;
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+    localStorage.setItem("profilePic", profilePic);
+
+    if (result) {
+      onReceiveGoogle(result.user);
+    } else {
+      alert("Error");
+    }
+  };
   return (
     <AreaLogin>
       <h1>Faça login em sua conta</h1>
@@ -74,9 +78,7 @@ function Login({
       </BtnDefaultIcons>
 
       <BtnDefaultIcons>
-        <GoogleIcon
-        // onClick={actionLoginGoogle}
-        />
+        <GoogleIcon onClick={actionLoginGoogle} />
         <div className="center">Faça login com Google</div>
       </BtnDefaultIcons>
 
@@ -91,8 +93,8 @@ function Login({
           <label>Senha</label>
           <input type="text" onChange={(e) => setPassword(e.target.value)} />
         </div>
-        {/* <BtnDefault onClick={login}>Entrar</BtnDefault> */}
-        <button onClick={login}>Entrar</button>
+        <BtnDefault onClick={login}>Entrar</BtnDefault>
+        {/* <button onClick={login}>Entrar</button> */}
         <div className="footerLogin">
           Não tem uma conta?
           <Link to="/registrar">Registre-se</Link>

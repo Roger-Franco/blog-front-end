@@ -38,14 +38,14 @@ function App() {
     });
   }, []);
 
-  // const actionLoginDataGoodle = async (u) => {
-  //   let newUser = {
-  //     id: u.uid,
-  //     name: u.displayName,
-  //     avatar: u.photoURL,
-  //   };
-  //   setUser(newUser);
-  // };
+  const actionLoginDataGoodle = async (u) => {
+    let newUser = {
+      id: u.uid,
+      name: u.displayName,
+      avatar: u.photoURL,
+    };
+    setUser(newUser);
+  };
 
   if (user === null) {
     return (
@@ -90,7 +90,7 @@ function App() {
             </ul>
           </nav> */}
           <Routes>
-            <Route path="/" element={<Posts />}></Route>
+            {/* <Route path="/" element={<Posts />}></Route> */}
             <Route path="/postcard" element={<PostCard />}></Route>
             <Route path="/postcard2" element={<PostCard2 />}></Route>
             <Route path="/postcard3" element={<PostCard3 />}></Route>

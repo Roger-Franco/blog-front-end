@@ -9,13 +9,15 @@ const LoginRegister = ({ onReceiveGoogle, setUser }) => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route exact path="/registrar" element={<Register />} />
+
         <Route
           exact
-          path="/registrar"
-          element={<Register onReceiveGoogle={onReceiveGoogle} />}
+          path="/login"
+          element={
+            <Login onReceiveGoogle={onReceiveGoogle} setUser={setUser} />
+          }
         />
-
-        <Route exact path="/login" element={<Login setUser={setUser} />} />
       </Routes>
     </BrowserRouter>
   );
