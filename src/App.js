@@ -5,6 +5,7 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
+import "./App.css";
 import { Menu } from "./pages/Menu";
 import { Posts } from "./components/Posts";
 import { PostCard } from "./components/PostCard";

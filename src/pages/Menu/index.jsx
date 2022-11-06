@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import React, { useEffect, useState } from "react";
+import "./index.css";
 import { useNavigate } from "react-router-dom";
 import {
   AppBar,
@@ -32,6 +33,26 @@ export const Menu = ({ user, setUser }) => {
 
   return (
     <div style={{ backgroundColor: "red", display: "flex" }}>
+      {/* <nav>
+        <Link to="/" value="1">
+          All Posts
+        </Link>
+        <Link to="/PostCard" value="2">
+          Posts One
+        </Link>
+        <Link to="/PostCard2" value="3">
+          Posts Two
+        </Link>
+        <Link to="/PostCard3" value="3">
+          Posts Three
+        </Link>
+        <Link to="/PostCard4" value="3">
+          Posts Four
+        </Link>
+        <Link to="/PersonalTexts" value="3">
+          Personal Texts
+        </Link>
+      </nav> */}
       <AppBar
         style={{
           background: "linear-gradient(45deg, #48D1CC 30%, #008080 90%)",
@@ -43,9 +64,10 @@ export const Menu = ({ user, setUser }) => {
             <IconButton>
               <MenuIcon />
             </IconButton>
+
             <Tab value="0" label="Item Zero" />
             <Tab href="/" value="1" label="All Posts" />
-            <Tab href="/PostCard" value="2" label="Posts One" />
+            <Tab disableRipple href="/PostCard" value="2" label="Posts One" />
             <Tab href="/PostCard2" value="3" label="Posts Two" />
             <Tab href="/PostCard3" value="3" label="Posts Three" />
             <Tab href="/PostCard4" value="3" label="Posts Four" />
@@ -63,7 +85,6 @@ export const Menu = ({ user, setUser }) => {
             <label> {localStorage.getItem("email")}</label>
           </div>
           <button onClick={logout}>Sign Out</button>
-          {/* <Link to="/login">Login</Link> */}
         </Toolbar>
       </AppBar>
     </div>

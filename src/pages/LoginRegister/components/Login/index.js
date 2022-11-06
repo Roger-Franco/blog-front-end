@@ -63,6 +63,7 @@ function Login({ onReceiveGoogle, setUser }) {
     localStorage.setItem("profilePic", profilePic);
 
     if (result) {
+      navigate("/");
       onReceiveGoogle(result.user);
     } else {
       alert("Error");
