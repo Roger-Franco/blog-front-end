@@ -48,25 +48,29 @@ function App() {
     setUser(newUser);
   };
 
-  if (user === null) {
-    return (
-      <LoginRegister index setUser={setUser} />
-      // onReceiveGoogle={actionLoginDataGoodle}
-    );
-  }
+  // if (user === null) {
+  //   return (
+  //     <LoginRegister index setUser={setUser} />
+  //     // onReceiveGoogle={actionLoginDataGoodle}
+  //   );
+  // }
   return (
-    <div className="App">
-      <Router>
-        <Menu setUser={setUser} user={user} />
-        <Divider />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        {/* <button onClick={() => setUser(null)}>logout</button> */}
-        <div>
-          {/* <nav>
+    <>
+      {!user ? (
+        <LoginRegister index setUser={setUser} />
+      ) : (
+        <div className="App">
+          <Router>
+            <Menu setUser={setUser} user={user} />
+            <Divider />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            {/* <button onClick={() => setUser(null)}>logout</button> */}
+            <div>
+              {/* <nav>
             <ul>
               <li>
                 {" "}
@@ -90,21 +94,29 @@ function App() {
               </li>
             </ul>
           </nav> */}
-          <Routes>
-            {/* <Route path="/" element={<Posts />}></Route> */}
-            <Route path="/postcard" element={<PostCard />}></Route>
-            <Route path="/postcard2" element={<PostCard2 />}></Route>
-            <Route path="/postcard3" element={<PostCard3 />}></Route>
-            <Route path="/postcard4" element={<PostCard4 />}></Route>
-            <Route path="/PersonalTexts" element={<PersonalTexts />}></Route>
-            <Route path="/postar-conteúdo" element={<WriteTexts />}></Route>
-            <Route path="/editar-conteúdo/:id" element={<EditTexts />}></Route>
-            <Route path="/ler-conteúdo/:id" element={<ReadText />}></Route>
-            <Route path="*" element={<Posts />}></Route>
-          </Routes>
+              <Routes>
+                {/* <Route path="/" element={<Posts />}></Route> */}
+                <Route path="/postcard" element={<PostCard />}></Route>
+                <Route path="/postcard2" element={<PostCard2 />}></Route>
+                <Route path="/postcard3" element={<PostCard3 />}></Route>
+                <Route path="/postcard4" element={<PostCard4 />}></Route>
+                <Route
+                  path="/PersonalTexts"
+                  element={<PersonalTexts />}
+                ></Route>
+                <Route path="/postar-conteúdo" element={<WriteTexts />}></Route>
+                <Route
+                  path="/editar-conteúdo/:id"
+                  element={<EditTexts />}
+                ></Route>
+                <Route path="/ler-conteúdo/:id" element={<ReadText />}></Route>
+                <Route path="*" element={<Posts />}></Route>
+              </Routes>
+            </div>
+          </Router>
         </div>
-      </Router>
-    </div>
+      )}
+    </>
   );
 }
 

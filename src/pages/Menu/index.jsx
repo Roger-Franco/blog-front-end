@@ -28,6 +28,7 @@ export const Menu = ({ user, setUser }) => {
   const logout = async () => {
     await signOut(auth);
     setUser(null);
+    localStorage.clear();
     navigate("/login");
   };
 
@@ -66,7 +67,7 @@ export const Menu = ({ user, setUser }) => {
             </IconButton>
 
             <Tab value="0" label="Item Zero" />
-            <Tab href="/" value="1" label="All Posts" />
+            {!user && <Tab href="/" value="1" label="All Posts" />}
             <Tab disableRipple href="/PostCard" value="2" label="Posts One" />
             <Tab href="/PostCard2" value="3" label="Posts Two" />
             <Tab href="/PostCard3" value="3" label="Posts Three" />
