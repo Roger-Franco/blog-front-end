@@ -17,18 +17,16 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Posts } from "../../components/Posts";
 import { getAuth, signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
-import { firebaseApp } from "../../Api";
+import { auth } from "../../Api";
 
-const auth = getAuth(firebaseApp);
-
-export const Menu = ({ user, setUser }) => {
+export const Menu = ({ user, setIsAuth }) => {
   const [data, setData] = useState();
   const navigate = useNavigate();
 
   const logout = async () => {
     await signOut(auth);
-    setUser(null);
     localStorage.clear();
+    setIsAuth(false);
     navigate("/login");
   };
 
@@ -78,11 +76,8 @@ export const Menu = ({ user, setUser }) => {
             className="avatar"
             style={{ display: "block", marginLeft: "10px" }}
           >
-            <img
-              src={user.avatar || localStorage.getItem("profilePic")}
-              alt="avatar"
-            />
-            <label> {user.displayName || localStorage.getItem("name")}</label>
+            <img src={localStorage.getItem("profilePic")} alt="avatar" />
+            <label> {localStorage.getItem("name")}</label>
             <label> {localStorage.getItem("email")}</label>
           </div>
           <button onClick={logout}>Sign Out</button>

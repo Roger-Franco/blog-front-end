@@ -5,19 +5,13 @@ import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./components/Register";
 import Login from "./components/Login";
 
-const LoginRegister = ({ onReceiveGoogle, setUser }) => {
+const LoginRegister = ({ setIsAuth }) => {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/registrar" element={<Register />} />
 
-        <Route
-          exact
-          path="/login"
-          element={
-            <Login onReceiveGoogle={onReceiveGoogle} setUser={setUser} />
-          }
-        />
+        <Route exact path="/login" element={<Login setIsAuth={setIsAuth} />} />
       </Routes>
     </BrowserRouter>
   );

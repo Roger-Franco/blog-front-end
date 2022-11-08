@@ -5,18 +5,20 @@ import { BtnDefault, BtnDefaultIcons } from "../../../../components/styled";
 import { AreaLogin } from "../../styled";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
-import Api, { firebaseApp } from "../../../../Api";
+import { auth, provider } from "../../../../Api";
 import { useNavigate } from "react-router-dom";
 import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
 } from "firebase/auth";
 
-const auth = getAuth(firebaseApp);
-const auth1 = getAuth();
+// const auth = getAuth(firebaseApp);
+// const auth1 = getAuth();
 
-function Login({ onReceiveGoogle, setUser }) {
+function Login({ isAuth, setIsAuth }) {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -37,7 +39,11 @@ function Login({ onReceiveGoogle, setUser }) {
   const login = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const authLogin = await signInWithEmailAndPassword(auth, email, password);
+      console.log(authLogin, "authLogin");
+      localStorage.setItem("email", email);
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
       navigate("/");
     } catch (error) {
       console.log(error.message);
@@ -52,8 +58,8 @@ function Login({ onReceiveGoogle, setUser }) {
   // });
   // }, []);
 
-  const actionLoginGoogle = async () => {
-    let result = await Api.googleLogar();
+  const signWithGoogle = async () => {
+    let result = await signInWithPopup(auth, provider);
 
     const name = result.user.displayName;
     const email = result.user.email;
@@ -61,13 +67,9 @@ function Login({ onReceiveGoogle, setUser }) {
     localStorage.setItem("name", name);
     localStorage.setItem("email", email);
     localStorage.setItem("profilePic", profilePic);
-
-    if (result) {
-      navigate("/");
-      onReceiveGoogle(result.user);
-    } else {
-      alert("Error");
-    }
+    localStorage.setItem("isAuth", true);
+    setIsAuth(true);
+    navigate("/");
   };
   return (
     <AreaLogin>
@@ -79,13 +81,17 @@ function Login({ onReceiveGoogle, setUser }) {
       </BtnDefaultIcons>
 
       <BtnDefaultIcons>
-        <GoogleIcon onClick={actionLoginGoogle} />
+        <GoogleIcon onClick={signWithGoogle} />
         <div className="center">Faça login com Google</div>
       </BtnDefaultIcons>
 
       <p>OU</p>
 
       <form>
+        {/* <div className="form-input">
+          <label>Nome</label>
+          <input type="text" onChange={(e) => setName(e.target.value)} />
+        </div> */}
         <div className="form-input">
           <label>E-mail</label>
           <input type="text" onChange={(e) => setEmail(e.target.value)} />

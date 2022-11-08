@@ -2,8 +2,8 @@ import { TextField, Button, Container, Stack } from "@mui/material";
 import { Box } from "@mui/system";
 import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { db } from "../../../../Api";
+import { Link, useNavigate } from "react-router-dom";
+import { auth, db } from "../../../../Api";
 
 function WriteTexts() {
   const [name, setName] = useState("");
@@ -13,6 +13,8 @@ function WriteTexts() {
   const [text, setText] = useState("");
   const blogCollectionRef = collection(db, "blogs");
 
+  const navigate = useNavigate();
+
   const createPost = async () => {
     const docRef = await addDoc(blogCollectionRef, {
       name,
@@ -20,7 +22,9 @@ function WriteTexts() {
       title,
       subtitle,
       text,
+      author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
     });
+    navigate("/PersonalTexts");
   };
   return (
     <div>

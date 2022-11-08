@@ -27,17 +27,6 @@ import { ExpandMore } from "./components/ExpandMore";
 // import { styled } from "@mui/material/styles";
 // import { ExpandMore } from "@mui/icons-material";
 
-// const ExpandMore = styled((props) => {
-//   const { expand, ...other } = props;
-//   return <IconButton {...other} />;
-// })(({ theme, expand }) => ({
-//   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-//   marginLeft: "auto",
-//   transition: theme.transitions.create("transform", {
-//     duration: theme.transitions.duration.shortest,
-//   }),
-// }));
-
 const PersonalTexts = () => {
   const [blogs, setBlogs] = useState([]);
   const [expanded, setExpanded] = useState(false);
@@ -51,7 +40,7 @@ const PersonalTexts = () => {
       setBlogs(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getBlogs();
-  }, []);
+  });
 
   const deleteBlog = async (id) => {
     const blogDoc = doc(db, "blogs", id);
@@ -158,6 +147,7 @@ const PersonalTexts = () => {
                 <CardContent>
                   <Typography paragraph>Texto: {blog.text}</Typography>
                 </CardContent>
+                <h3>@{blog?.author?.name || localStorage.getItem("email")}</h3>
               </Collapse>
 
               {/* <h1>Nome: {blog.name}</h1>

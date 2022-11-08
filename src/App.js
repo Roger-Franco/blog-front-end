@@ -20,33 +20,30 @@ import WriteTexts from "./pages/PersonalTexts/components/writeTexts";
 import EditTexts from "./pages/PersonalTexts/components/editTexts";
 import ReadText from "./pages/PersonalTexts/components/ReadText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { firebaseApp } from "./Api";
+import { auth } from "./Api";
 
-const auth = getAuth(firebaseApp);
 // const auth = getAuth();
 
 function App() {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   // const [user, setUser] = useState("diferente de null pra ficar logado");
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
   // const navigate = useNavigate();
-  console.log(user, "userAppantes");
-  console.log(auth, "auth");
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      console.log(auth, "aqui oooooo");
-      setUser(currentUser);
-    });
-  }, []);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //   });
+  // }, []);
 
-  const actionLoginDataGoodle = async (u) => {
-    let newUser = {
-      id: u.uid,
-      name: u.displayName,
-      avatar: u.photoURL,
-    };
-    setUser(newUser);
-  };
+  // const actionLoginDataGoodle = async (u) => {
+  //   let newUser = {
+  //     id: u.uid,
+  //     name: u.displayName,
+  //     avatar: u.photoURL,
+  //   };
+  //   setUser(newUser);
+  // };
 
   // if (user === null) {
   //   return (
@@ -56,12 +53,12 @@ function App() {
   // }
   return (
     <>
-      {!user ? (
-        <LoginRegister index setUser={setUser} />
+      {!isAuth ? (
+        <LoginRegister setIsAuth={setIsAuth} />
       ) : (
         <div className="App">
           <Router>
-            <Menu setUser={setUser} user={user} />
+            <Menu setIsAuth={setIsAuth} />
             <Divider />
             <br />
             <br />
@@ -95,7 +92,7 @@ function App() {
             </ul>
           </nav> */}
               <Routes>
-                {/* <Route path="/" element={<Posts />}></Route> */}
+                <Route path="/" element={<Posts />}></Route>
                 <Route path="/postcard" element={<PostCard />}></Route>
                 <Route path="/postcard2" element={<PostCard2 />}></Route>
                 <Route path="/postcard3" element={<PostCard3 />}></Route>

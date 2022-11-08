@@ -4,9 +4,7 @@ import { BtnDefault } from "../../../../components/styled";
 import { AreaLogin } from "../../styled";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { firebaseApp } from "../../../../Api";
-
-const auth = getAuth(firebaseApp);
+import { auth } from "../../../../Api";
 
 function Register() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -37,10 +35,6 @@ function Register() {
       <br />
       <h3>Crie sua conta, é grátis!</h3> <br />
       <form>
-        {/* <div className="form-input">
-          <label>Nome</label>
-          <input type="text" />
-        </div> */}
         <div className="form-input">
           <label>E-mail</label>
           <input
