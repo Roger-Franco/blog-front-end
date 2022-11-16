@@ -18,7 +18,6 @@ export const PostCard4 = () => {
       .then((response) => response.json())
       .then((myJson) => {
         setData(myJson.slice(0, 10));
-        console.log(myJson.slice(0, 10), "myJson4");
       });
   }, [updateNews]);
 

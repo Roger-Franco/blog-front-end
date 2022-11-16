@@ -21,6 +21,8 @@ import EditTexts from "./pages/PersonalTexts/components/editTexts";
 import ReadText from "./pages/PersonalTexts/components/ReadText";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Api";
+import Login from "./pages/LoginRegister/components/Login";
+import Register from "./pages/LoginRegister/components/Register";
 
 // const auth = getAuth();
 
@@ -53,21 +55,21 @@ function App() {
   // }
   return (
     <>
-      {!isAuth ? (
+      {/* {!isAuth ? (
         <LoginRegister setIsAuth={setIsAuth} />
-      ) : (
-        <div className="App">
-          <Router>
-            <Menu setIsAuth={setIsAuth} />
-            <Divider />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            {/* <button onClick={() => setUser(null)}>logout</button> */}
-            <div>
-              {/* <nav>
+      ) : ( */}
+      <div className="App">
+        <Router>
+          <Menu setIsAuth={setIsAuth} />
+          <Divider />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          {/* <button onClick={() => setUser(null)}>logout</button> */}
+          <div>
+            {/* <nav>
             <ul>
               <li>
                 {" "}
@@ -91,28 +93,43 @@ function App() {
               </li>
             </ul>
           </nav> */}
-              <Routes>
-                <Route path="/" element={<Posts />}></Route>
-                <Route path="/postcard" element={<PostCard />}></Route>
-                <Route path="/postcard2" element={<PostCard2 />}></Route>
-                <Route path="/postcard3" element={<PostCard3 />}></Route>
-                <Route path="/postcard4" element={<PostCard4 />}></Route>
-                <Route
-                  path="/PersonalTexts"
-                  element={<PersonalTexts />}
-                ></Route>
-                <Route path="/postar-conteúdo" element={<WriteTexts />}></Route>
-                <Route
-                  path="/editar-conteúdo/:id"
-                  element={<EditTexts />}
-                ></Route>
-                <Route path="/ler-conteúdo/:id" element={<ReadText />}></Route>
-                <Route path="*" element={<Posts />}></Route>
-              </Routes>
-            </div>
-          </Router>
-        </div>
-      )}
+            <Routes>
+              {/* <Route path="/" element={<Posts />}></Route> */}
+              <Route
+                exact
+                path="/login"
+                element={<Login setIsAuth={setIsAuth} />}
+              />
+              <Route exact path="/registrar" element={<Register />} />
+              <Route path="/postcard" element={<PostCard />}></Route>
+              <Route path="/postcard2" element={<PostCard2 />}></Route>
+              <Route path="/postcard3" element={<PostCard3 />}></Route>
+              <Route path="/postcard4" element={<PostCard4 />}></Route>
+              <Route
+                path="/PersonalTexts"
+                element={<PersonalTexts isAuth={isAuth} />}
+              ></Route>
+              <Route
+                path="/postar-conteúdo"
+                element={
+                  !isAuth ? (
+                    <LoginRegister setIsAuth={setIsAuth} />
+                  ) : (
+                    <WriteTexts />
+                  )
+                }
+              ></Route>
+              <Route
+                path="/editar-conteúdo/:id"
+                element={<EditTexts />}
+              ></Route>
+              <Route path="/ler-conteúdo/:id" element={<ReadText />}></Route>
+              <Route path="*" element={<Posts />}></Route>
+            </Routes>
+          </div>
+        </Router>
+      </div>
+      {/* )} */}
     </>
   );
 }

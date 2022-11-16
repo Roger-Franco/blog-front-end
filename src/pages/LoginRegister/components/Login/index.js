@@ -40,7 +40,6 @@ function Login({ isAuth, setIsAuth }) {
     e.preventDefault();
     try {
       const authLogin = await signInWithEmailAndPassword(auth, email, password);
-      console.log(authLogin, "authLogin");
       localStorage.setItem("email", email);
       localStorage.setItem("isAuth", true);
       setIsAuth(true);

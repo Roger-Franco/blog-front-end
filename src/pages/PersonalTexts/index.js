@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import {
   Avatar,
@@ -20,23 +21,22 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { red } from "@mui/material/colors";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../Api";
 import moon from "../../imgs/download.jpeg";
 import { ExpandMore } from "./components/ExpandMore";
 // import { styled } from "@mui/material/styles";
 // import { ExpandMore } from "@mui/icons-material";
 
-const PersonalTexts = () => {
+const PersonalTexts = ({ isAuth }) => {
   const [blogs, setBlogs] = useState([]);
   const [expanded, setExpanded] = useState(false);
   const blogCollectionRef = collection(db, "blogs");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getBlogs = async () => {
       const data = await getDocs(blogCollectionRef);
-      // data.forEach((doc) => {
-      //   console.log(doc.id, doc.data());
       setBlogs(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getBlogs();
@@ -49,6 +49,13 @@ const PersonalTexts = () => {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const verificaIsAuth = () => {
+    if (!isAuth) {
+      navigate("/login");
+    }
+    return;
   };
 
   return (
@@ -78,7 +85,7 @@ const PersonalTexts = () => {
               textDecoration: "none",
               color: "blue",
             }}
-            to="/postar-conteúdo"
+            to={!isAuth ? "/login" : "/postar-conteúdo"}
           >
             Postar Conteúdo
           </Link>
