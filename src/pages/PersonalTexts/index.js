@@ -120,14 +120,14 @@ const PersonalTexts = ({ isAuth }) => {
                 image={moon}
                 alt="Beautiful moon"
               />
-              <CardContent>
+              <CardContent onClick={() => navigate(`/ler-conteúdo/${blog.id}`)}>
                 <Typography variant="body2" color="text.secondary">
                   This impressive paella is a perfect party dish and a fun meal
                   to cook together with your guests. Add 1 cup of frozen peas
                   along with the mussels, if you like.
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {blog.subtitle}
+                  {blog.subtitle} {blog.id}
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
